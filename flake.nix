@@ -110,7 +110,7 @@
           export HOME=$(mktemp -d)
         '';
 
-        postInstall = lib.optionalString (self.pkgs.stdenv.buildPlatform.canExecute self.pkgs.stdenv.hostPlatform) ''
+        postInstall = self.pkgs.lib.optionalString (self.pkgs.stdenv.buildPlatform.canExecute self.pkgs.stdenv.hostPlatform) ''
           installShellCompletion --cmd turso \
             --bash <($out/bin/turso completion bash) \
             --fish <($out/bin/turso completion fish) \
