@@ -15,11 +15,11 @@
         pname = "sqld";
         version = "0.24.17";
 
-        src = self.pkgs.fetchFromGitHub {
-          owner = "tursodatabase";
-          repo = "libsql";
-          rev = "libsql-server-v${version}";
-          hash = "sha256-EPvrKUXCUwbM+VU7YbeoZK4PLjh5NgYnB18sCG5Eb3I=";
+        src = builtins.fetchGit {
+          url = "https://github.com/tursodatabase/libsql/";
+          ref = "main";
+          rev = "6122f5e5b7d1746c48cb6442e798ed320a3da2d0";
+          hash = "";
           fetchSubmodules = true;
         };
 
@@ -34,8 +34,6 @@
         };
 
         cargoRoot = "libsql-server";
-
-        cargoHash = "";
 
         nativeBuildInputs = [
           self.pkgs.pkg-config
