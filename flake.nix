@@ -11,7 +11,7 @@
 
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-      default = self.pkgs.rustPlatform.buildRustPackage rec {
+      sqld = self.pkgs.rustPlatform.buildRustPackage rec {
         pname = "sqld";
         version = "0.24.17";
 
@@ -49,6 +49,36 @@
 
         # requires a complex setup with podman for the end-to-end tests
         doCheck = false;
+      };
+
+      turso-cli = self.pkgs.buildGoModule rec {
+        pname = "turso-cli";
+        version = "0.96.2";
+
+        src = self.pkgs.fetchFromGitHub {
+          owner = "tursodatabase";
+          repo = "libsql";
+          rev = "${version}";
+          hash = "";
+        };
+
+        nativeBuildInputs = [ self.pkgs.installShellFiles ];
+
+        ldflags = [ "-X github.com/tursodatabase/turso-cli/internal/cmd.version=v${version}" ];
+
+        preCheck = ''
+          export HOME=$(mktemp -d)
+        '';
+
+        postInstall = lib.optionalString (self.pkgs.stdenv.buildPlatform.canExecute self.pkgs.stdenv.hostPlatform) ''
+          installShellCompletion --cmd turso \
+            --bash <($out/bin/turso completion bash) \
+            --fish <($out/bin/turso completion fish) \
+            --zsh <($out/bin/turso completion zsh)
+        '';
+
+        passthru.updateScript = self.pkgs.nix-update-script { };
+
       };
     };
 }
