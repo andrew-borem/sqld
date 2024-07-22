@@ -122,5 +122,7 @@
         passthru.updateScript = self.pkgs.nix-update-script { };
 
       };
+
+      default = { };
     };
 }
