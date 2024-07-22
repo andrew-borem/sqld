@@ -36,21 +36,16 @@
           self.pkgs.pkg-config
           self.pkgs.protobuf
           self.pkgs.rustPlatform.bindgenHook
+          self.pkgs.sqlite
+          self.pkgs.cmake
+          self.pkgs.libclang
         ];
 
         buildInputs =
-          [
-            self.pkgs.openssl
-            self.pkgs.sqlite
-            self.pkgs.zstd
-            self.pkgs.cmake
-            self.pkgs.libclang
-          ]
+          [ self.pkgs.openssl ]
           ++ self.pkgs.lib.optionals self.pkgs.stdenv.isDarwin [
             self.pkgs.darwin.apple_sdk.frameworks.Security
           ];
-
-        env.ZSTD_SYS_USE_PKG_CONFIG = true;
 
         # requires a complex setup with podman for the end-to-end tests
         doCheck = false;
