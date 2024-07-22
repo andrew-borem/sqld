@@ -102,6 +102,8 @@
           hash = "";
         };
 
+        vendorHash = "";
+
         nativeBuildInputs = [ self.pkgs.installShellFiles ];
 
         ldflags = [ "-X github.com/tursodatabase/turso-cli/internal/cmd.version=v${version}" ];
