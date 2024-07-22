@@ -20,7 +20,6 @@
           ref = "main";
           rev = "6122f5e5b7d1746c48cb6442e798ed320a3da2d0";
           hash = "";
-          fetchSubmodules = true;
         };
 
         cargoLock = {
