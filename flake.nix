@@ -97,7 +97,7 @@
 
         src = self.pkgs.fetchFromGitHub {
           owner = "tursodatabase";
-          repo = "libsql";
+          repo = "turso-cli";
           rev = "${version}";
           hash = "";
         };
