@@ -7,10 +7,10 @@
 
   outputs =
     { self, nixpkgs, ... }:
-    rec {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    {
 
-      defaultPackage."x86_64-linux" = pkgs.rustPlatform.buildRustPackage rec {
+      libsql = nixpkgs.legacyPackages."x86_64-linux".rustPlatform.buildRustPackage rec {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
         pname = "sqld";
         version = "0.24.17";
 
