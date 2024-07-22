@@ -102,7 +102,7 @@
           hash = "";
         };
 
-        vendorHash = "";
+        vendorHash = "sha256-G8rYCjGkk0/bVnp0A74HIduYuC5lLvlzAoaOLaQfhG4=";
 
         nativeBuildInputs = [ self.pkgs.installShellFiles ];
 
