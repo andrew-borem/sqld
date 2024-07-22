@@ -99,7 +99,7 @@
           owner = "tursodatabase";
           repo = "turso-cli";
           rev = "v${version}";
-          hash = "";
+          hash = "sha256-G8rYCjGkk0/bVnp0A74HIduYuC5lLvlzAoaOLaQfhG4=";
         };
 
         vendorHash = "sha256-G8rYCjGkk0/bVnp0A74HIduYuC5lLvlzAoaOLaQfhG4=";
