@@ -123,7 +123,7 @@
 
       };
 
-      default = self.pkgs.stdenv.mkDeriviation {
+      default = self.pkgs.stdenv.mkDerivation {
         name = "turso";
 
         buildInputs = [
