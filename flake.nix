@@ -44,6 +44,7 @@
             self.pkgs.sqlite
             self.pkgs.zstd
             self.pkgs.cmake
+            self.pkgs.libclang
           ]
           ++ self.pkgs.lib.optionals self.pkgs.stdenv.isDarwin [
             self.pkgs.darwin.apple_sdk.frameworks.Security
