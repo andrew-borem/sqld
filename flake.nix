@@ -20,6 +20,7 @@
           repo = "libsql";
           rev = "libsql-server-v${version}";
           hash = "sha256-EPvrKUXCUwbM+VU7YbeoZK4PLjh5NgYnB18sCG5Eb3I=";
+          fetchSubmodules = true;
         };
 
         cargoLock = {
