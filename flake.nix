@@ -99,10 +99,10 @@
           owner = "tursodatabase";
           repo = "turso-cli";
           rev = "v${version}";
-          hash = "sha256-G8rYCjGkk0/bVnp0A74HIduYuC5lLvlzAoaOLaQfhG4=";
+          hash = "sha256-nMhXjCRBv4q6c3VcQ+6JTijEH1EVctfb+i1sCYoD62E=";
         };
 
-        vendorHash = "sha256-nMhXjCRBv4q6c3VcQ+6JTijEH1EVctfb+i1sCYoD62E=";
+        vendorHash = "sha256-G8rYCjGkk0/bVnp0A74HIduYuC5lLvlzAoaOLaQfhG4=";
 
         nativeBuildInputs = [ self.pkgs.installShellFiles ];
 
