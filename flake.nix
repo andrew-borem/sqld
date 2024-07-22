@@ -31,8 +31,6 @@
           };
         };
 
-        cargoRoot = "libsql-server";
-
         nativeBuildInputs = [
           self.pkgs.pkg-config
           self.pkgs.protobuf
