@@ -32,6 +32,8 @@
           };
         };
 
+        cargoHash = "";
+
         nativeBuildInputs = [
           self.pkgs.pkg-config
           self.pkgs.protobuf
