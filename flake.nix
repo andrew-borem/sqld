@@ -32,6 +32,8 @@
           };
         };
 
+        cargoRoot = "libsql-server";
+
         cargoHash = "";
 
         nativeBuildInputs = [
