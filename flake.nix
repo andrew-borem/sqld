@@ -9,12 +9,13 @@
     { self, nixpkgs, ... }:
     {
 
-      default = nixpkgs.legacyPackages.x86_64-linux.rustPlatform.buildRustPackage rec {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+      default = self.pkgs.rustPlatform.buildRustPackage rec {
         pname = "sqld";
         version = "0.24.17";
 
-        src = pkgs.fetchFromGitHub {
+        src = self.pkgs.fetchFromGitHub {
           owner = "tursodatabase";
           repo = "libsql";
           rev = "libsql-server-v${version}";
@@ -32,16 +33,20 @@
         };
 
         nativeBuildInputs = [
-          pkgs.pkg-config
-          pkgs.protobuf
-          pkgs.rustPlatform.bindgenHook
+          self.pkgs.pkg-config
+          self.pkgs.protobuf
+          self.pkgs.rustPlatform.bindgenHook
         ];
 
-        buildInputs = [
-          pkgs.openssl
-          pkgs.sqlite
-          pkgs.zstd
-        ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.apple_sdk.frameworks.Security ];
+        buildInputs =
+          [
+            self.pkgs.openssl
+            self.pkgs.sqlite
+            self.pkgs.zstd
+          ]
+          ++ self.pkgs.lib.optionals self.pkgs.stdenv.isDarwin [
+            self.pkgs.darwin.apple_sdk.frameworks.Security
+          ];
 
         env.ZSTD_SYS_USE_PKG_CONFIG = true;
 
