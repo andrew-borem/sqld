@@ -15,10 +15,11 @@
         pname = "sqld";
         version = "0.24.17";
 
-        src = builtins.fetchGit {
-          url = "https://github.com/tursodatabase/libsql/";
-          ref = "main";
-          rev = "6122f5e5b7d1746c48cb6442e798ed320a3da2d0";
+        src = self.pkgs.fetchFromGitHub {
+          owner = "tursodatabase";
+          repo = "libsql";
+          rev = "libsql-server-v${version}";
+          hash = "sha256-EPvrKUXCUwbM+VU7YbeoZK4PLjh5NgYnB18sCG5Eb3I=";
         };
 
         cargoLock = {
@@ -42,6 +43,7 @@
             self.pkgs.openssl
             self.pkgs.sqlite
             self.pkgs.zstd
+            self.pkgs.cmake
           ]
           ++ self.pkgs.lib.optionals self.pkgs.stdenv.isDarwin [
             self.pkgs.darwin.apple_sdk.frameworks.Security
