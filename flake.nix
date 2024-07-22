@@ -123,6 +123,14 @@
 
       };
 
-      default = { };
+      default = self.pkgs.stdenv.mkDeriviation {
+        name = "turso";
+
+        buildInputs = [
+          self.cli
+          self.sqld
+        ];
+        src = ./.;
+      };
     };
 }
